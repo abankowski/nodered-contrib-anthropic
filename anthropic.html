@@ -1,0 +1,59 @@
+<script type="text/javascript">
+    RED.nodes.registerType('anthropic',{
+        category: 'anthropic',
+        color: '#10A37F',
+        defaults: {
+            name: { value: "" },
+            topic: { value: ""},
+            BaseUrl: { value: "http://api.anthropic.com" }
+        },
+        credentials: {
+            ANTHROPIC_API_KEY: {type:"text" },
+        },
+        inputs:1,
+        outputs:1,
+        icon: "arrow-in.png",
+        label: function() {
+            return this.name||"anthropic";
+        },
+        oneditprepare: function () {
+            const node = this;
+            $('#node-input-topic').typedInput({type:"topic", types:[{
+                value: "topic",
+                options: [
+	            { value: "opus", label: "opus" },
+	            { value: "haiku", label: "haiku"},
+		    { value: "sonnet", label: "sonnet"},
+                    { value: "__EMPTY__", label: "read from msg.topic"},
+                ],
+            }]});
+        },
+    });
+</script>
+
+<script type="text/html" data-template-name="anthropic">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ANTHROPIC_API_KEY">
+            <i class="icon-tag"></i>
+            ANTHROPIC_API_KEY
+        </label>
+        <input type="text" id="node-input-ANTHROPIC_API_KEY" placeholder="ANTHROPIC_API_KEY">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topic">
+            <i class="icon-tag"></i>
+            Topic
+        </label>
+        <input type="text" id="node-input-topic" />
+    </div>
+</script>
+
+<script type="text/html" data-help-name="anthropic">
+
+    <h1>Description</h1>
+    <p>A Node-RED node that interacts with Anthropic machine learning models to generate text outputs like <a href="https://claude.ai/">Claude</a>.</p>
+ </script>

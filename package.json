@@ -1,0 +1,53 @@
+{
+  "name": "node-red-contrib-anthropic",
+  "version": "0.0.1",
+  "description": "A Node-RED node that interacts with Anthropic machine learning models to generate text.",
+  "main": "anthropic.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abankowski/nodered-contrib-anthropic.git"
+  },
+  "keywords": [
+    "node-red",
+    "nodejs",
+    "javascript",
+    "api",
+    "flow",
+    "npm",
+    "machine-learning",
+    "node",
+    "example",
+    "text-generation",
+    "code-generation",
+    "conversational-ai",
+    "sonnet",
+    "haiku",
+    "opus",
+    "anthropic",
+    "claude-3"
+  ],
+  "node-red": {
+    "version": ">=2.0.0",
+    "nodes": {
+      "anthropic": "anthropic.js"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": {
+    "name": "Artur Bańkowski",
+    "email": "artur.bankowski@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abankowski/nodered-contrib-anthropic/issues"
+  },
+  "homepage": "https://github.com/abankowski/nodered-contrib-anthropic/blob/master/README.md",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1"
+  }
+}
