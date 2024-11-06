@@ -28,7 +28,7 @@ module.exports = (RED) => {
                 text: "Processing...",
             });
 
-            if (config.topic !== "__EMPTY__") {
+            if (config.topic !== "") {
                 msg.topic = config.topic;
             }
 
@@ -36,7 +36,7 @@ module.exports = (RED) => {
                 msg.topic = msg.topic.toLowerCase();
             }
 
-            if (!ACCEPT_TOPIC_LIST.includes(msg.topic) && msg.topic !== "__empty__") {
+            if (!ACCEPT_TOPIC_LIST.includes(msg.topic) && msg.topic !== "") {
                 node.status({
                     fill: "red",
                     shape: "dot",
@@ -58,20 +58,21 @@ module.exports = (RED) => {
                     };
                     msg.history.push(input);
 
+
                     
 		    const response = await anthropicClient.messages.create({
                         model: claudeModel,
                         max_tokens: parseInt(msg.max_tokens) || 1024,
                         messages: msg.history,
                         metadata: msg.metadata,
-			stop_sequences: msg.stop_sequences || msg.stop || null, // for gpt compat
-			temperature: parseInt(msg.temperature) || 1,
-			top_p: parseInt(msg.top_p) || 1,
-			top_k: parseInt(msg.top_k) || null,
-			tools: msg.tools || null,
-			tool_choice: msg.tool_choice || null,
-			system: msg.system || null,
-			stream: msg.stream || false
+                        stop_sequences: msg.stop_sequences || msg.stop || undefined, // for gpt compat
+                        temperature: parseInt(msg.temperature) || 1,
+                        top_p: parseInt(msg.top_p) || 1,
+                        top_k: parseInt(msg.top_k) || undefined,
+                        tools: msg.tools || undefined,
+                        tool_choice: msg.tool_choice || undefined,
+                        system: msg.system || undefined,
+                        stream: msg.stream || false
                     });
 	
 
